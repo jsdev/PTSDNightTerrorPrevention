@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadence</title>
+</head>
+<body>
+<header><h1>Cadence</h1></header>
+<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+<script>
+    //First iteration an App that gets simulated nightTerror detection from wearable.
+    var incomingNightTerror = 'child_added',
+            NightTerrors = new Firebase('blinding-inferno-2101.firebaseio.com');
+
+    NightTerrors.on(incomingNightTerror, function (possibleNightTerror) {
+        alert('wake up having a night terror');
+    });
+</script>
+</body>
+</html>
