@@ -4,61 +4,44 @@
     <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.indigo-pink.min.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <link rel="stylesheet" href="alarm-clock.css" />
-    <link rel="stylesheet" href="nyancat.css" />
 
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.min.js"></script>
 
     <script src='http://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script src="http://momentjs.com/downloads/moment.min.js"></script>
-
-    <meta charset="UTF-8">
+    <audio controls loop hidden autoplay>
+        <source src="alarm-clock-01.mp3"
+                type='audio/mpeg; codecs="mp3"'/>
+    </audio>
     <title>Sleep Cadence</title>
-    <style>
-        section { margin-top: 3em;}
-    </style>
 </head>
 <body>
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
-            <span class="mdl-layout-title">CADENCE</span>
+            <!-- Title -->
+            <span class="mdl-layout-title">Sleep Cadence</span>
             <div class="mdl-layout-spacer"></div>
             <!-- Navigation. We hide it in small screens. -->
             <nav class="mdl-navigation mdl-layout--large-screen-only">
-                <a class="mdl-navigation__link" href="">Chat</a>
-                <!-- Number badge on icon -->
-                <a class='material-icons mdl-badge' data-badge = '0' href = ''>account_box</a>
-
-                <!--
-                <script>
-                    var a = document.createElement("A");
-                    //var num_alerts = 0;
-                    //var NightTerrors = new Firebase('blinding-inferno-2101.firebaseio.com');
-                    //NightTerrors.once("value", function(snapshot){
-                    //    snapshot.forEach(function(childSnapshot){
-                    //        num_alerts++;
-                    //    });
-                    //});
-                    //a.setAttribute('class', 'material-icons mdl-badge');
-                    //a.setAttribute('data-badge', num_alerts.toString());
-                    //a.setAttribute('href', '');
-                    var t = document.createTextNode("account_box");
-                    a.appendChild(t);
-                    document.body.appendChild(a);
-                </script> -->
-
+                <a class="mdl-navigation__link" href="">Link</a>
+                <a class="mdl-navigation__link" href="">Link</a>
+                <a class="mdl-navigation__link" href="">Link</a>
+                <a class="mdl-navigation__link" href="">Link</a>
             </nav>
         </div>
     </header>
     <div class="mdl-layout__drawer">
         <span class="mdl-layout-title">Title</span>
         <nav class="mdl-navigation">
-            <a class="mdl-navigation__link" href="report.html">Report</a>
-            <a class="mdl-navigation__link" href="others.html">Others Report</a>
+            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" href="">Link</a>
         </nav>
     </div>
-    <div class="mdl-layout__content">
+    <main class="mdl-layout__content">
         <div class="page-content" style="position: relative">
             <div class="contain-clock">
                 <div class="face-1">
@@ -90,106 +73,12 @@
 
             <button class="btn_alarm" onclick="hide(this)">&nbsp;</button>
         </div>
-    </div>
+    </main>
 </div>
-<section id="options" style="display: none">
-    <div><button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="chooseCat();">Cat Video</button></div>
-</section>
-<section id="chosen" style="position: relative">
-    <!--<div id="mainContainer" style="display:none">-->
-        <!--<div id="nyanCat">-->
-            <!--<div id="wholeHead">-->
-                <!--<div class="skin ear"></div>-->
-                <!--<div class="skin ear rightEar"></div>-->
-                <!--<div id="mainHead" class="skin">-->
-                    <!--<div class="eye"></div>-->
-                    <!--<div class="eye rightEye"></div>-->
-                    <!--<div class="nose"></div>-->
-                    <!--<div class="chick"></div>-->
-                    <!--<div class="chick rightChick"></div>-->
-                    <!--<div class="mouth">E</div>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div id="toastBody">-->
-                <!--<div>-->
-                    <!--&nbsp;  &nbsp; &nbsp;.&nbsp;&nbsp;.&nbsp; &nbsp; &nbsp;..&nbsp;  &nbsp; &nbsp;.&nbsp;.&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;..&nbsp;  &nbsp; &nbsp;.&nbsp;&nbsp;.-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div id="wholeTail">-->
-                <!--<div class="tail skin"></div>-->
-                <!--<div class="tail middleTail skin"></div>-->
-                <!--<div class="tail backTail skin"></div>-->
-            <!--</div>-->
-            <!--<div id="allYourLegAreBelongToUs">-->
-                <!--<div class="skin leg back leftBack"></div>-->
-                <!--<div class="skin leg back"></div>-->
-                <!--<div class="skin leg front leftFront"></div>-->
-                <!--<div class="skin leg front"></div>-->
-            <!--</div>-->
-            <!--<div class="rainbow"></div>-->
-            <!--<div class="rainbow r2"></div>-->
-            <!--<div class="rainbow r3"></div>-->
-            <!--<div class="rainbow r4"></div>-->
-        <!--</div>-->
-        <!--<div class="star starMovement1">-->
-            <!--<div number="1"></div>-->
-            <!--<div number="2"></div>-->
-            <!--<div number="3"></div>-->
-            <!--<div number="4"></div>-->
-            <!--<div number="5"></div>-->
-            <!--<div number="6"></div>-->
-            <!--<div number="7"></div>-->
-            <!--<div number="8"></div>-->
-        <!--</div>-->
-        <!--<div class="star starMovement2 backwards">-->
-            <!--<div number="1"></div>-->
-            <!--<div number="2"></div>-->
-            <!--<div number="3"></div>-->
-            <!--<div number="4"></div>-->
-            <!--<div number="5"></div>-->
-            <!--<div number="6"></div>-->
-            <!--<div number="7"></div>-->
-            <!--<div number="8"></div>-->
-        <!--</div>-->
-        <!--<div class="star starMovement3">-->
-            <!--<div number="1"></div>-->
-            <!--<div number="2"></div>-->
-            <!--<div number="3"></div>-->
-            <!--<div number="4"></div>-->
-            <!--<div number="5"></div>-->
-            <!--<div number="6"></div>-->
-            <!--<div number="7"></div>-->
-            <!--<div number="8"></div>-->
-        <!--</div>-->
-        <!--<div class="star starMovement4">-->
-            <!--<div number="1"></div>-->
-            <!--<div number="2"></div>-->
-            <!--<div number="3"></div>-->
-            <!--<div number="4"></div>-->
-            <!--<div number="5"></div>-->
-            <!--<div number="6"></div>-->
-            <!--<div number="7"></div>-->
-            <!--<div number="8"></div>-->
-        <!--</div>-->
-        <!--<div class="star starMovement5">-->
-            <!--<div number="1"></div>-->
-            <!--<div number="2"></div>-->
-            <!--<div number="3"></div>-->
-            <!--<div number="4"></div>-->
-            <!--<div number="5"></div>-->
-            <!--<div number="6"></div>-->
-            <!--<div number="7"></div>-->
-            <!--<div number="8"></div>-->
-        <!--</div>-->
-    <!--</div>-->
-    <div id="seek-treatment" style="display: none"></div>
-</section>
+<header><h1>Cadence Alerts</h1></header>
 <div id="messages"></div>
-<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-        onclick="goToVaFacilitiesPage()">Find Near VA Provider</button>
-<script src="listenForNightTerror.js"></script>
-<script src="methods.js"></script>
+<button onclick="goToVaFacilitiesPage()">Find Near VA Provider</button>
 <script src="listenForMyNightTerror.js"></script>
-
+<script src="methods.js"></script>
 </body>
 </html>

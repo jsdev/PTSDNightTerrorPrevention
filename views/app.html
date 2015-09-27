@@ -13,12 +13,39 @@
     <script src="http://momentjs.com/downloads/moment.min.js"></script>
 
     <meta charset="UTF-8">
-    <title>Sleep Cadence</title>
+    <title>Cadence</title>
     <style>
         section { margin-top: 3em;}
+        #mainContainer {
+            border: 0 none;
+        }
+        #actions, #chosen {
+            padding-top: 4em;
+            text-align: center;
+        }
+        #actions div {
+            padding-bottom: 3em;
+        }
+
+        #seek-treatment {
+            display: inline-block;
+            max-width: 210px;
+        }
     </style>
 </head>
 <body>
+<audio id="audio" controls loop hidden>
+    <source src="alarm-clock-01.mp3"
+            type='audio/mpeg; codecs="mp3"'/>
+</audio>
+<audio id="tunes" controls loop hidden>
+    <source src="Sunday_Morning_Tamarama.mp3"
+            type='audio/mpeg; codecs="mp3"'/>
+</audio>
+<audio id="nyan" controls loop hidden>
+    <source src="nyan-cat.mp3"
+            type='audio/mpeg; codecs="mp3"'/>
+</audio>
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
@@ -60,7 +87,7 @@
     </div>
     <div class="mdl-layout__content">
         <div class="page-content" style="position: relative">
-            <div class="contain-clock">
+            <div class="contain-clock" style="display: none">
                 <div class="face-1">
                     <div class="hour"></div>
                     <div class="minute"></div>
@@ -89,104 +116,105 @@
             </div>
 
             <button class="btn_alarm" onclick="hide(this)">&nbsp;</button>
+            <div id="actions" style="display: none">
+                <div><button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="chooseCat();">Cat Video</button></div>
+                <div><button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="playTunes();">Play Tunes</button></div>
+                <div><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="seekTreatment()">Seek Treatment</button></div>
+                <div><button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="sleep();"><img src="https://cdn3.iconfinder.com/data/icons/cat-power-premium/120/cat_sleep-48.png" height="36" alt="Sleep" /> Sleep</button></div>
+            </div>
+            <div id="chosen" style="position: relative" style="display: none">
+                <div id="mainContainer" style="display:none">
+                    <div id="nyanCat">
+                        <div id="wholeHead">
+                            <div class="skin ear"></div>
+                            <div class="skin ear rightEar"></div>
+                            <div id="mainHead" class="skin">
+                                <div class="eye"></div>
+                                <div class="eye rightEye"></div>
+                                <div class="nose"></div>
+                                <div class="chick"></div>
+                                <div class="chick rightChick"></div>
+                                <div class="mouth">E</div>
+                            </div>
+                        </div>
+                        <div id="toastBody">
+                            <div>
+                                &nbsp;  &nbsp; &nbsp;.&nbsp;&nbsp;.&nbsp; &nbsp; &nbsp;..&nbsp;  &nbsp; &nbsp;.&nbsp;.&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;..&nbsp;  &nbsp; &nbsp;.&nbsp;&nbsp;.
+                            </div>
+                        </div>
+                        <div id="wholeTail">
+                            <div class="tail skin"></div>
+                            <div class="tail middleTail skin"></div>
+                            <div class="tail backTail skin"></div>
+                        </div>
+                        <div id="allYourLegAreBelongToUs">
+                            <div class="skin leg back leftBack"></div>
+                            <div class="skin leg back"></div>
+                            <div class="skin leg front leftFront"></div>
+                            <div class="skin leg front"></div>
+                        </div>
+                        <div class="rainbow"></div>
+                        <div class="rainbow r2"></div>
+                        <div class="rainbow r3"></div>
+                        <div class="rainbow r4"></div>
+                    </div>
+                    <div class="star starMovement1">
+                        <div number="1"></div>
+                        <div number="2"></div>
+                        <div number="3"></div>
+                        <div number="4"></div>
+                        <div number="5"></div>
+                        <div number="6"></div>
+                        <div number="7"></div>
+                        <div number="8"></div>
+                    </div>
+                    <div class="star starMovement2 backwards">
+                        <div number="1"></div>
+                        <div number="2"></div>
+                        <div number="3"></div>
+                        <div number="4"></div>
+                        <div number="5"></div>
+                        <div number="6"></div>
+                        <div number="7"></div>
+                        <div number="8"></div>
+                    </div>
+                    <div class="star starMovement3">
+                        <div number="1"></div>
+                        <div number="2"></div>
+                        <div number="3"></div>
+                        <div number="4"></div>
+                        <div number="5"></div>
+                        <div number="6"></div>
+                        <div number="7"></div>
+                        <div number="8"></div>
+                    </div>
+                    <div class="star starMovement4">
+                        <div number="1"></div>
+                        <div number="2"></div>
+                        <div number="3"></div>
+                        <div number="4"></div>
+                        <div number="5"></div>
+                        <div number="6"></div>
+                        <div number="7"></div>
+                        <div number="8"></div>
+                    </div>
+                    <div class="star starMovement5">
+                        <div number="1"></div>
+                        <div number="2"></div>
+                        <div number="3"></div>
+                        <div number="4"></div>
+                        <div number="5"></div>
+                        <div number="6"></div>
+                        <div number="7"></div>
+                        <div number="8"></div>
+                    </div>
+                </div>
+                <div id="seek-treatment" style="display: none"></div>
+            </div>
         </div>
     </div>
 </div>
-<section id="options" style="display: none">
-    <div><button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="chooseCat();">Cat Video</button></div>
-</section>
-<section id="chosen" style="position: relative">
-    <!--<div id="mainContainer" style="display:none">-->
-        <!--<div id="nyanCat">-->
-            <!--<div id="wholeHead">-->
-                <!--<div class="skin ear"></div>-->
-                <!--<div class="skin ear rightEar"></div>-->
-                <!--<div id="mainHead" class="skin">-->
-                    <!--<div class="eye"></div>-->
-                    <!--<div class="eye rightEye"></div>-->
-                    <!--<div class="nose"></div>-->
-                    <!--<div class="chick"></div>-->
-                    <!--<div class="chick rightChick"></div>-->
-                    <!--<div class="mouth">E</div>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div id="toastBody">-->
-                <!--<div>-->
-                    <!--&nbsp;  &nbsp; &nbsp;.&nbsp;&nbsp;.&nbsp; &nbsp; &nbsp;..&nbsp;  &nbsp; &nbsp;.&nbsp;.&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;..&nbsp;  &nbsp; &nbsp;.&nbsp;&nbsp;.-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div id="wholeTail">-->
-                <!--<div class="tail skin"></div>-->
-                <!--<div class="tail middleTail skin"></div>-->
-                <!--<div class="tail backTail skin"></div>-->
-            <!--</div>-->
-            <!--<div id="allYourLegAreBelongToUs">-->
-                <!--<div class="skin leg back leftBack"></div>-->
-                <!--<div class="skin leg back"></div>-->
-                <!--<div class="skin leg front leftFront"></div>-->
-                <!--<div class="skin leg front"></div>-->
-            <!--</div>-->
-            <!--<div class="rainbow"></div>-->
-            <!--<div class="rainbow r2"></div>-->
-            <!--<div class="rainbow r3"></div>-->
-            <!--<div class="rainbow r4"></div>-->
-        <!--</div>-->
-        <!--<div class="star starMovement1">-->
-            <!--<div number="1"></div>-->
-            <!--<div number="2"></div>-->
-            <!--<div number="3"></div>-->
-            <!--<div number="4"></div>-->
-            <!--<div number="5"></div>-->
-            <!--<div number="6"></div>-->
-            <!--<div number="7"></div>-->
-            <!--<div number="8"></div>-->
-        <!--</div>-->
-        <!--<div class="star starMovement2 backwards">-->
-            <!--<div number="1"></div>-->
-            <!--<div number="2"></div>-->
-            <!--<div number="3"></div>-->
-            <!--<div number="4"></div>-->
-            <!--<div number="5"></div>-->
-            <!--<div number="6"></div>-->
-            <!--<div number="7"></div>-->
-            <!--<div number="8"></div>-->
-        <!--</div>-->
-        <!--<div class="star starMovement3">-->
-            <!--<div number="1"></div>-->
-            <!--<div number="2"></div>-->
-            <!--<div number="3"></div>-->
-            <!--<div number="4"></div>-->
-            <!--<div number="5"></div>-->
-            <!--<div number="6"></div>-->
-            <!--<div number="7"></div>-->
-            <!--<div number="8"></div>-->
-        <!--</div>-->
-        <!--<div class="star starMovement4">-->
-            <!--<div number="1"></div>-->
-            <!--<div number="2"></div>-->
-            <!--<div number="3"></div>-->
-            <!--<div number="4"></div>-->
-            <!--<div number="5"></div>-->
-            <!--<div number="6"></div>-->
-            <!--<div number="7"></div>-->
-            <!--<div number="8"></div>-->
-        <!--</div>-->
-        <!--<div class="star starMovement5">-->
-            <!--<div number="1"></div>-->
-            <!--<div number="2"></div>-->
-            <!--<div number="3"></div>-->
-            <!--<div number="4"></div>-->
-            <!--<div number="5"></div>-->
-            <!--<div number="6"></div>-->
-            <!--<div number="7"></div>-->
-            <!--<div number="8"></div>-->
-        <!--</div>-->
-    <!--</div>-->
-    <div id="seek-treatment" style="display: none"></div>
-</section>
 <div id="messages"></div>
-<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-        onclick="goToVaFacilitiesPage()">Find Near VA Provider</button>
 <script src="listenForNightTerror.js"></script>
 <script src="methods.js"></script>
 <script src="listenForMyNightTerror.js"></script>

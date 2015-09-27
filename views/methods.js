@@ -5,7 +5,7 @@ var facilitiesLink,
             return {
                 nameLink: '<a href="facility.asp?id=982" id="982" title="Go to Alexandria Vet Center"><strong>Alexandria Vet Center</strong></a>',
                 address: '6940 South Kings Highway #204, Alexandria, VA 22310',
-                phone: '6940+South+Kings+Highway+#204,+Alexandria,+VA 22310'
+                phone: '703-360-8633'
             }
         },
         parseAddress: function (address) {
@@ -37,9 +37,14 @@ var facilitiesLink,
         console.log('nearest facility obj');
         console.log(facility);
 
-        template = '<div>'+facility.nameLink+'</div><div><a href="tel:+1'+ facility.phone.replace(/[-,(,)]/g, '') + '">' + facility.phone + '</a></div>';
-        template += '<div>' + facility.address + '</div><div>(<a href="http://maps.google.com/maps?q=">' + service.parseAddress(facility.address)+ '">View map</a></div>';
-        document.getElementById('seek-treatment').innerHTML = template;
+        template = '<div>'+facility.nameLink+'</div><div>Auto Dial: <a href="tel:+1'+ facility.phone.replace(/[-,(,)]/g, '') + '">' + facility.phone + '</a></div>';
+        template += '<div>' + facility.address + '</div><div><a href="http://maps.google.com/maps?q=' + service.parseAddress(facility.address)+ '">View Google Map</a></div>';
+        console.log('template');
+        console.log(template);
+        var treatment = document.getElementById('seek-treatment');
+        treatment.innerHTML = template;
+        treatment.parentNode.style.display = 'block';
+        treatment.style.display = 'inline-block';
     },
     error = function (err) {
         console.warn('ERROR(' + err.code + '): ' + err.message);

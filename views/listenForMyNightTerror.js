@@ -2,33 +2,76 @@
  * Created by GTAS6 on 9/26/2015.
  */
 var incomingNightTerror = 'child_added',
-    me = 'alanisawesom',
+    me = 'alanisawesome',
     cadence = new Firebase('blinding-inferno-2101.firebaseio.com'),
     $messages = $('#messages'),
     snd = new Audio("rooster.mp3"),
     alarm = new Audio("alarm-clock-01.mp3"),
     clock = document.querySelector('.contain-clock');
 
-cadence.child('users').child(me).on(incomingNightTerror, function (possibleNightTerror) {
-//    var time = new Number(possibleNightTerror.val().timestamp);
+var alarm = document.getElementById("audio");
+var tunes = document.getElementById("tunes");
+var nyanCat = document.getElementById("nyan");
+function playAlarm() {
+    stopTunes();
+    stopNyanCat();
+    $('#chosen, #mainContainer').hide();
+    $('.btn_alarm').show();
+    alarm.play();
+}
+
+function stopAlarm() {
+    alarm.pause();
+}
+
+function playNyanCat() {
+    $('#actions').hide();
+    nyanCat.play();
+}
+
+function stopNyanCat() {
+    nyanCat.pause();
+}
+
+function playTunes() {
+    $('#actions').hide();
+    tunes.play();
+}
+
+function stopTunes() {
+    tunes.pause();
+}
+
+cadence.child('users').child(me).child('night_terrors').on(incomingNightTerror, function (possibleNightTerror) {
+    $('#chosen, #actions').hide();
     clock = document.querySelector('.contain-clock');
     clock.style.display = 'block';
-    alarm = new Audio("alarm-clock-01.mp3");
-    alarm.play();
+    playAlarm();
 });
 
-var optionsEl = document.getElementById('options');
+var optionsEl = document.getElementById('actions');
+var chosen = document.getElementById('actions');
 
 var chooseCat = function () {
-    optionsEl.style.display = 'none';
-    document.getElementById("mainContainer").style.display = "block";
+    $('#actions').hide();
+    $('#chosen, #mainContainer').show();
+    playNyanCat();
+};
+
+var seekTreatment = function () {
+    $('#actions').hide();
+    $('#chosen, #seek-treatment').show();
+};
+
+var sleep = function () {
+    $('#actions').hide();
 };
 
 var hide = function (el) {
     el.style.display = 'none';
     clock.style.display = 'none';
     optionsEl.style.display = 'block';
-    alarm.stop();
+    stopAlarm();
 };
 
 //NightTerrors.on(incomingNightTerror, function (possibleNightTerror) {
