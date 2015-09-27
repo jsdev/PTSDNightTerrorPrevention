@@ -5,8 +5,6 @@ var incomingNightTerror = 'child_added',
     me = 'alanisawesome',
     cadence = new Firebase('blinding-inferno-2101.firebaseio.com'),
     $messages = $('#messages'),
-    snd = new Audio("rooster.mp3"),
-    alarm = new Audio("alarm-clock-01.mp3"),
     clock = document.querySelector('.contain-clock');
 
 var alarm = document.getElementById("audio");

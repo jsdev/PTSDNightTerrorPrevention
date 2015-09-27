@@ -1,8 +1,10 @@
 /**
  * Created by GTAS6 on 9/26/2015.
  */
-var HISTORY_CAP = 5,
-    NightTerrors = new Firebase('blinding-inferno-2101.firebaseio.com');
+var HISTORY_CAP = 50,
+    me = 'alanisawesome',
+    cadence = new Firebase('blinding-inferno-2101.firebaseio.com'),
+    NightTerrors = cadence.child('users').child(me).child('night_terrors');
 
 // Keep a mapping of firebase locations to HTML elements, so we can move / remove elements as necessary.
 var htmlForPath = {};
