@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.indigo-pink.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="alarm-clock.css" />
+
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.min.js"></script>
     <script src='http://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script src="http://momentjs.com/downloads/moment.min.js"></script>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Cadence | FitBit simulator</title>
+    <style>
+        section div { margin: .5em;}
+    </style>
 </head>
 <body>
 <header><h1>Cadence  | FitBit simulator</h1></header>
-<button type="button">Push NightTerror</button>
+<section>
+    <div><button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" data-user="alanisawesome">simulate Alan Turing NightTerror</button></div>
+    <div><button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" data-user="dbag">simulate Doug Benson NightTerror</button></div>
+    <div><button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" data-user="gracehop">simulate Grace Hopper NightTerror</button></div>
+    <div><button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" data-user="imdb">simulate Todd Glass NightTerror</button></div>
+</section>
 <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
 <script src="pushNightTerrors.js"></script>
 </body>

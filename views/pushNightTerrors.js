@@ -1,8 +1,12 @@
 var incomingNightTerror = 'child_added',
-    NightTerrors = new Firebase('blinding-inferno-2101.firebaseio.com'),
+    cadence = new Firebase('blinding-inferno-2101.firebaseio.com'),
     pushNightTerror = function () {
-        var now = Date.now(); //'2015-09-26'; // Date.now()
-        NightTerrors.push({timestamp: now, symptom: 'heartbeat spike'});
-    };
+        var now = Date.now(),
+            user = $(this).data('user'),
+            usersRef = cadence.child("users").child(user);
+        usersRef.child('night_terrors').push({timestamp: now, symptom: 'heartbeat spike'});
+    },
+    $buttons = $('button');
 
-document.querySelector('button').addEventListener("click", pushNightTerror, false);
+// Fun FACT: Can't run a forEach on buttons as querySelectorAll doesn't return a true array
+$buttons.on('click', pushNightTerror);
