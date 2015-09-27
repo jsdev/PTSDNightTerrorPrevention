@@ -10,15 +10,14 @@ var incomingNightTerror = 'child_added',
     nyanCat = document.getElementById("nyan");
 
 function playAlarm() {
-    stopTunes();
-    stopNyanCat();
-    $('#chosen, #mainContainer').hide();
-    $('.btn_alarm').show();
-    alarm.play();
+    //version two alarm is nyan cat with tunes
+    playTunes();
 }
 
 function stopAlarm() {
-    alarm.pause();
+    //version two alarm is nyan cat with tunes
+    stopTunes();
+    $('#chosen, #mainContainer').hide();
 }
 
 function playNyanCat() {
@@ -31,7 +30,6 @@ function stopNyanCat() {
 }
 
 function playTunes() {
-    $('#actions').hide();
     tunes.play();
 }
 
@@ -39,20 +37,21 @@ function stopTunes() {
     tunes.pause();
 }
 
-cadence.child('users').child(me).child('night_terrors').on(incomingNightTerror, function (possibleNightTerror) {
-    $('#chosen, #actions').hide();
-    clock = document.querySelector('.contain-clock');
-    clock.style.display = 'block';
-    playAlarm();
+cadence.child('users').child(me).child('night_terrors').limitToLast(5).on(incomingNightTerror, function (possibleNightTerror) {
+    chooseCat();
+//    playAlarm();
 });
 
 var optionsEl = document.getElementById('actions');
 var chosen = document.getElementById('actions');
 
 var chooseCat = function () {
+    if ($('#mainContainer').css('display') === 'none') {
+        return;
+    }
     $('#actions').hide();
     $('#chosen, #mainContainer').show();
-    playNyanCat();
+    playTunes();
 };
 
 var seekTreatment = function () {
