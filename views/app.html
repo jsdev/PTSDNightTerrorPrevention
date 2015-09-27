@@ -26,17 +26,28 @@
                 <a class="mdl-navigation__link" href="">Link</a>
                 <a class="mdl-navigation__link" href="">Link</a>
                 <a class="mdl-navigation__link" href="">Link</a>
-                <a class="mdl-navigation__link" href="">Link</a>
+                <a class="mdl-navigation__link" href="">Chat</a>
                 <!-- Number badge on icon -->
+                <a class='material-icons mdl-badge' data-badge = '0' href = ''>account_box</a>
 
-                <!--<script>
-                    var NightTerrors = new Firebase('blinding-inferno-2101.firebaseio.com');
-                    NightTerrors.once("value", function(snapshot)){
+                <!--
+                <script>
+                    var a = document.createElement("A");
+                    //var num_alerts = 0;
+                    //var NightTerrors = new Firebase('blinding-inferno-2101.firebaseio.com');
+                    //NightTerrors.once("value", function(snapshot){
+                    //    snapshot.forEach(function(childSnapshot){
+                    //        num_alerts++;
+                    //    });
+                    //});
+                    //a.setAttribute('class', 'material-icons mdl-badge');
+                    //a.setAttribute('data-badge', num_alerts.toString());
+                    //a.setAttribute('href', '');
+                    var t = document.createTextNode("account_box");
+                    a.appendChild(t);
+                    document.body.appendChild(a);
+                </script> -->
 
-                    }
-                </script>-->
-
-                <a class="material-icons mdl-badge" data-badge="1" href="./alerts.html">account_box</a>
             </nav>
         </div>
     </header>
@@ -83,7 +94,6 @@
         </div>
     </main>
 </div>
-<header><h1>Cadence Alerts</h1></header>
 <div id="messages"></div>
 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
         onclick="goToVaFacilitiesPage()">Find Near VA Provider</button>
