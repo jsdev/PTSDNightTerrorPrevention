@@ -1,13 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.indigo-pink.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="alarm-clock.css" />
+
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.min.js"></script>
+
     <script src='http://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script src="http://momentjs.com/downloads/moment.min.js"></script>
-    <meta charset="UTF-8">
-    <title>Cadence</title>
+
+    <meta charset="UTF-8" />
+    <title>Sleep Cadence</title>
 </head>
 <body>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+            <!-- Title -->
+            <span class="mdl-layout-title">Sleep Cadence</span>
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation. We hide it in small screens. -->
+            <nav class="mdl-navigation mdl-layout--large-screen-only">
+                <a class="mdl-navigation__link" href="">Link</a>
+                <a class="mdl-navigation__link" href="">Link</a>
+                <a class="mdl-navigation__link" href="">Link</a>
+                <a class="mdl-navigation__link" href="">Link</a>
+            </nav>
+        </div>
+    </header>
+    <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Title</span>
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" href="">Link</a>
+        </nav>
+    </div>
+    <main class="mdl-layout__content">
+        <div class="page-content" style="position: relative">
+            <div class="contain-clock">
+                <div class="face-1">
+                    <div class="hour"></div>
+                    <div class="minute"></div>
+                    <div class="second"></div>
+                    <div class="center"></div>
+                </div>
+
+                <div class="face-2">
+                    <div class="line"></div>
+                    <div class="line line-2"></div>
+                    <div class="line line-3"></div>
+                    <div class="line line-4"></div>
+                    <div class="line line-5"></div>
+                    <div class="line line-6"></div>
+                </div>
+
+                <div class="arm"></div>
+                <div class="arm arm-2"></div>
+
+                <div class="bell"></div>
+                <div class="bell bell-2"></div>
+
+                <div class="hammer"></div>
+
+                <div class="handle"></div>
+            </div>
+
+            <button class="btn_alarm" onclick="hide(this)">&nbsp;</button>
+        </div>
+    </main>
+</div>
 <header><h1>Cadence Alerts</h1></header>
 <div id="messages"></div>
 <button onclick="goToVaFacilitiesPage()">Find Near VA Provider</button>

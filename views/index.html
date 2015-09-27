@@ -1,0 +1,98 @@
+<html>
+<body>
+<div ng-controller="AppCtrl" style="height:500px;" class="sidenavdemoBasicUsage layout layout-column ng-scope" ng-app="MyApp">
+    <section class="flex layout layout-row">
+
+        <md-sidenav class="md-sidenav-left md-whiteframe-z2 md-closed" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" tabindex="-1">
+
+            <md-toolbar class="md-theme-indigo">
+                <h1 class="md-toolbar-tools">Sidenav Left</h1>
+            </md-toolbar>
+            <md-content ng-controller="LeftCtrl" class="layout-padding ng-scope">
+                <button class="md-primary md-button" ng-transclude="" ng-click="close()" hide-gt-md=""></button>
+                <p class="hide-md show-gt-md">
+                    This sidenav is locked open on your device. To go back to the default behavior,
+                    narrow your display.
+                </p>
+            </md-content>
+
+        </md-sidenav>
+
+        <md-content class="flex layout-padding">
+
+            <div class="layout layout-column layout-align-top-center layout-fill">
+                <p>
+                    The left sidenav will 'lock open' on a medium (&gt;=960px wide) device.
+                </p>
+                <p>
+                    The right sidenav will focus on a specific child element.
+                </p>
+
+                <div>
+                    <button class="md-primary md-button" ng-transclude="" ng-click="toggleLeft()" hide-gt-md=""></button>
+                </div>
+
+                <div>
+                    <button class="md-primary md-button" ng-transclude="" ng-click="toggleRight()"></button>
+                </div>
+            </div>
+
+            <div class="flex"></div>
+
+        </md-content>
+
+        <md-sidenav class="md-sidenav-right md-whiteframe-z2 md-closed" md-component-id="right" tabindex="-1">
+
+            <md-toolbar class="md-theme-light">
+                <h1 class="md-toolbar-tools">Sidenav Right</h1>
+            </md-toolbar>
+            <md-content ng-controller="RightCtrl" class="layout-padding ng-scope">
+                <form class="ng-pristine ng-valid">
+                    <md-input-container>
+                        <label for="testInput">Test input</label>
+                        <input type="text" id="testInput" ng-model="data" md-autofocus="" class="ng-pristine ng-untouched ng-valid">
+                    </md-input-container>
+                </form>
+                <button class="md-primary md-button" ng-transclude="" ng-click="close()"></button>
+            </md-content>
+
+        </md-sidenav>
+
+    </section>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-animate.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-route.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-aria.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-messages.min.js"></script>
+<script src="https://material.angularjs.org/HEAD/angular-material.js"></script>
+<script>
+    var myApp = angular.module('MyApp', ['ngMaterial']);
+
+    myApp.controller('AppCtrl', function ($scope, $timeout, $mdSidenav, $mdUtil, $log) {
+        $scope.toggleLeft = buildToggler('left');
+        $scope.toggleRight = buildToggler('right');
+        function buildToggler(navID) {
+            var debounceFn = $mdUtil.debounce(function () {
+                $mdSidenav(navID).toggle().then(function () {
+                    $log.debug('toggle ' + navID + ' is done');
+                });
+            }, 200);
+            return debounceFn;
+        }
+    }).controller('LeftCtrl', function ($scope, $timeout, $mdSidenav, $log) {
+        $scope.close = function () {
+            $mdSidenav('left').close().then(function () {
+                $log.debug('close LEFT is done');
+            });
+        };
+    }).controller('RightCtrl', function ($scope, $timeout, $mdSidenav, $log) {
+        $scope.close = function () {
+            $mdSidenav('right').close().then(function () {
+                $log.debug('close RIGHT is done');
+            });
+        };
+    });
+</script>
+</body>
+</html>
